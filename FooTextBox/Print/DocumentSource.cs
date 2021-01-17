@@ -108,7 +108,7 @@ namespace FooEditEngine.UWP
             view.Header = header;
             view.Footer = footer;
             view.PageBound = new Rectangle(pagedesc.ImageableRect.X, pagedesc.ImageableRect.Y, pagedesc.ImageableRect.Width, pagedesc.ImageableRect.Height);
-            document.PerformLayout();
+            document.PerformLayout(false);
 
             return view;
         }
