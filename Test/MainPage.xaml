@@ -7,6 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:foo="using:FooEditEngine.UWP"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary Source="MainPageStyles.xaml" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -14,6 +17,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Pivot ItemsSource="{Binding DocumentList}" Grid.Row="0" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}">
+            <Pivot.Resources>
+                <Style TargetType="PivotHeaderItem" BasedOn="{StaticResource CustomePivotHeaderStyle}"/>
+                <Style TargetType="Pivot" BasedOn="{StaticResource CustomPivotStyle}"/>
+            </Pivot.Resources>
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
