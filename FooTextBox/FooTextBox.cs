@@ -850,7 +850,7 @@ namespace FooEditEngine.UWP
             int i_startIndex = args.Request.Range.StartCaretPosition;
             int i_endIndex = args.Request.Range.EndCaretPosition;
 
-            if(args.Request.IsCanceled || i_startIndex == i_endIndex)
+            if(args.Request.IsCanceled)
             {
                 return;
             }
