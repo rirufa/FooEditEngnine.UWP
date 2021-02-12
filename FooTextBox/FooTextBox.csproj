@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>FooEditEngine.UWP</PackageId>
+    <PackageId>FooEditEngnine.UWP</PackageId>
     <Version>1.1.3.11</Version>
     <Authors>Foo Project</Authors>
     <Company>Foo Project</Company>
