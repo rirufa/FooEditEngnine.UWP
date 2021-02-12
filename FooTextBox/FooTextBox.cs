@@ -1070,7 +1070,7 @@ namespace FooEditEngine.UWP
 
         async void gestureRecongnizer_RightTapped(GestureRecognizer sender, RightTappedEventArgs e)
         {
-            ResourceMap map = ResourceManager.Current.MainResourceMap.GetSubtree("FooEditEngine.UWP/Resources");
+            ResourceMap map = ResourceManager.Current.MainResourceMap.GetSubtree("FooEditEngnine.UWP/Resources");
             ResourceContext context = ResourceContext.GetForCurrentView();
             if (this._View.HitTextArea(e.Position.X, e.Position.Y))
             {

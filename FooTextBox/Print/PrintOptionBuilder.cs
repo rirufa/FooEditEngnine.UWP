@@ -71,7 +71,7 @@ namespace FooEditEngine.UWP
         /// <param name="details">PrintTaskOptionDetailsオブジェクト</param>
         public void BuildPrintOption(PrintTaskOptionDetails details)
         {
-            ResourceMap map = ResourceManager.Current.MainResourceMap.GetSubtree("FooEditEngine.UWP/Resources");
+            ResourceMap map = ResourceManager.Current.MainResourceMap.GetSubtree("FooEditEngnine.UWP/Resources");
             ResourceContext context = ResourceContext.GetForCurrentView();
 
             var properties = this.PrintDocument.GetType().GetRuntimeProperties();
