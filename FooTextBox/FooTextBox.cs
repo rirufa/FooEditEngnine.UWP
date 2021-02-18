@@ -147,6 +147,8 @@ namespace FooEditEngine.UWP
                 this._View.Dispose();
                 this.Render.Dispose();
             }
+            this.Document.Clear();
+            this.Disposed = true;
         }
 
         /// <summary>
