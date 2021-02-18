@@ -175,6 +175,13 @@ namespace FooEditEngine
             return new Color4(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
         }
 
+        public static Color4 ToColor4(Brush brush)
+        {
+            SolidColorBrush colorBrush = (SolidColorBrush)brush;
+            Windows.UI.Color color = colorBrush.Color;
+            return new Color4(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+        }
+
         public override void CacheContent()
         {
         }

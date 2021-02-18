@@ -786,7 +786,9 @@ namespace FooEditEngine.UWP
                 args.BackgroundColor
                 );
             HilightType type = HilightType.None;
-            Color color = new Color(this.Foreground.A,this.Foreground.R,this.Foreground.G,this.Foreground.R);
+            SolidColorBrush colorBrush = (SolidColorBrush)this.Foreground;
+            Windows.UI.Color uicolor = colorBrush.Color;
+            Color color = new Color(uicolor.A, uicolor.R, uicolor.G, uicolor.B);
             bool isBoldLine = false;
             switch (args.UnderlineType)
             {
@@ -1774,9 +1776,9 @@ namespace FooEditEngine.UWP
         /// <summary>
         /// デフォルトの文字色を表す。これは依存プロパティです
         /// </summary>
-        public new Windows.UI.Color Foreground
+        public new Brush Foreground
         {
-            get { return (Windows.UI.Color)GetValue(ForegroundProperty); }
+            get { return (Brush)GetValue(ForegroundProperty); }
             set { SetValue(ForegroundProperty, value); }
         }
 
@@ -1784,14 +1786,14 @@ namespace FooEditEngine.UWP
         /// Foregroundの依存プロパティを表す
         /// </summary>
         public new static readonly DependencyProperty ForegroundProperty =
-            DependencyProperty.Register("Foreground", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Black, OnPropertyChanged));
+            DependencyProperty.Register("Foreground", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Black), OnPropertyChanged));
 
         /// <summary>
         /// 選択時の文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color HilightForeground
+        public Brush HilightForeground
         {
-            get { return (Windows.UI.Color)GetValue(HilightForegroundProperty); }
+            get { return (Brush)GetValue(HilightForegroundProperty); }
             set { SetValue(HilightForegroundProperty, value); }
         }
 
@@ -1799,14 +1801,14 @@ namespace FooEditEngine.UWP
         /// HilightForegroundForegroundの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty HilightForegroundProperty =
-            DependencyProperty.Register("HilightForeground", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.White, OnPropertyChanged));
+            DependencyProperty.Register("HilightForeground", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.White), OnPropertyChanged));
 
         /// <summary>
         /// 背景色を表す。これは依存プロパティです
         /// </summary>
-        public new Windows.UI.Color Background
+        public new Brush Background
         {
-            get { return (Windows.UI.Color)GetValue(BackgroundProperty); }
+            get { return (Brush)GetValue(BackgroundProperty); }
             set { SetValue(BackgroundProperty, value); }
         }
 
@@ -1814,14 +1816,14 @@ namespace FooEditEngine.UWP
         /// Backgroundの依存プロパティを表す
         /// </summary>
         public new static readonly DependencyProperty BackgroundProperty =
-            DependencyProperty.Register("Background", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.White, OnPropertyChanged));
+            DependencyProperty.Register("Background", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.White), OnPropertyChanged));
 
         /// <summary>
         /// コントロールコードの文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color ControlChar
+        public Brush ControlChar
         {
-            get { return (Windows.UI.Color)GetValue(ControlCharProperty); }
+            get { return (Brush)GetValue(ControlCharProperty); }
             set { SetValue(ControlCharProperty, value); }
         }
 
@@ -1829,14 +1831,14 @@ namespace FooEditEngine.UWP
         /// ControlCharの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty ControlCharProperty =
-            DependencyProperty.Register("ControlChar", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Gray, OnPropertyChanged));
+            DependencyProperty.Register("ControlChar", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray), OnPropertyChanged));
 
         /// <summary>
         /// 選択時の背景色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color Hilight
+        public Brush Hilight
         {
-            get { return (Windows.UI.Color)GetValue(HilightProperty); }
+            get { return (Brush)GetValue(HilightProperty); }
             set { SetValue(HilightProperty, value); }
         }
 
@@ -1844,14 +1846,14 @@ namespace FooEditEngine.UWP
         /// Hilightの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty HilightProperty =
-            DependencyProperty.Register("Hilight", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.DodgerBlue, OnPropertyChanged));
+            DependencyProperty.Register("Hilight", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.DodgerBlue), OnPropertyChanged));
 
         /// <summary>
         /// キーワード１の文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color Keyword1
+        public Brush Keyword1
         {
-            get { return (Windows.UI.Color)GetValue(Keyword1Property); }
+            get { return (Brush)GetValue(Keyword1Property); }
             set { SetValue(Keyword1Property, value); }
         }
 
@@ -1859,14 +1861,14 @@ namespace FooEditEngine.UWP
         /// Keyword1の依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty Keyword1Property =
-            DependencyProperty.Register("Keyword1", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Blue, OnPropertyChanged));
+            DependencyProperty.Register("Keyword1", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Blue), OnPropertyChanged));
 
         /// <summary>
         /// キーワード2の文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color Keyword2
+        public Brush Keyword2
         {
-            get { return (Windows.UI.Color)GetValue(Keyword2Property); }
+            get { return (Brush)GetValue(Keyword2Property); }
             set { SetValue(Keyword2Property, value); }
         }
 
@@ -1874,14 +1876,14 @@ namespace FooEditEngine.UWP
         /// Keyword2の依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty Keyword2Property =
-            DependencyProperty.Register("Keyword2", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.DarkCyan, OnPropertyChanged));
+            DependencyProperty.Register("Keyword2", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.DarkCyan), OnPropertyChanged));
 
         /// <summary>
         /// コメントの文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color Comment
+        public Brush Comment
         {
-            get { return (Windows.UI.Color)GetValue(CommentProperty); }
+            get { return (Brush)GetValue(CommentProperty); }
             set { SetValue(CommentProperty, value); }
         }
 
@@ -1889,14 +1891,14 @@ namespace FooEditEngine.UWP
         /// Commentの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty CommentProperty =
-            DependencyProperty.Register("Comment", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Green, OnPropertyChanged));
+            DependencyProperty.Register("Comment", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Green), OnPropertyChanged));
 
         /// <summary>
         /// 文字リテラルの文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color Literal
+        public Brush Literal
         {
-            get { return (Windows.UI.Color)GetValue(LiteralProperty); }
+            get { return (Brush)GetValue(LiteralProperty); }
             set { SetValue(LiteralProperty, value); }
         }
 
@@ -1904,14 +1906,14 @@ namespace FooEditEngine.UWP
         /// Literalの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty LiteralProperty =
-            DependencyProperty.Register("Literal", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Brown, OnPropertyChanged));
+            DependencyProperty.Register("Literal", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Brown), OnPropertyChanged));
 
         /// <summary>
         /// URLの文字色を表す。これは依存プロパティです
         /// </summary>
-        public Windows.UI.Color URL
+        public Brush URL
         {
-            get { return (Windows.UI.Color)GetValue(URLProperty); }
+            get { return (Brush)GetValue(URLProperty); }
             set { SetValue(URLProperty, value); }
         }
 
@@ -1919,14 +1921,14 @@ namespace FooEditEngine.UWP
         /// URLの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty URLProperty =
-            DependencyProperty.Register("URL", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Blue, OnPropertyChanged));
+            DependencyProperty.Register("URL", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Blue), OnPropertyChanged));
 
         /// <summary>
         /// 行更新フラグの色を表す
         /// </summary>
-        public Windows.UI.Color UpdateArea
+        public Brush UpdateArea
         {
-            get { return (Windows.UI.Color)GetValue(UpdateAreaProperty); }
+            get { return (Brush)GetValue(UpdateAreaProperty); }
             set { SetValue(UpdateAreaProperty, value); }
         }
 
@@ -1934,14 +1936,14 @@ namespace FooEditEngine.UWP
         /// UpdateAreaの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty UpdateAreaProperty =
-            DependencyProperty.Register("UpdateArea", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.MediumSeaGreen, OnPropertyChanged));
+            DependencyProperty.Register("UpdateArea", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.MediumSeaGreen), OnPropertyChanged));
 
         /// <summary>
         /// ラインマーカーの色を表す
         /// </summary>
-        public Windows.UI.Color LineMarker
+        public Brush LineMarker
         {
-            get { return (Windows.UI.Color)GetValue(LineMarkerProperty); }
+            get { return (Brush)GetValue(LineMarkerProperty); }
             set { SetValue(LineMarkerProperty, value); }
         }
 
@@ -1949,14 +1951,14 @@ namespace FooEditEngine.UWP
         /// LineMarkerの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty LineMarkerProperty =
-            DependencyProperty.Register("LineMarker", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Gray, OnPropertyChanged));
+            DependencyProperty.Register("LineMarker", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray), OnPropertyChanged));
 
         /// <summary>
         /// 挿入モード時のキャレットの色を表す
         /// </summary>
-        public Windows.UI.Color InsertCaret
+        public Brush InsertCaret
         {
-            get { return (Windows.UI.Color)GetValue(InsertCaretProperty); }
+            get { return (Brush)GetValue(InsertCaretProperty); }
             set { SetValue(InsertCaretProperty, value); }
         }
 
@@ -1964,14 +1966,14 @@ namespace FooEditEngine.UWP
         /// InsertCaretの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty InsertCaretProperty =
-            DependencyProperty.Register("InsertCaret", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Black, OnPropertyChanged));
+            DependencyProperty.Register("InsertCaret", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Black), OnPropertyChanged));
 
         /// <summary>
         /// 上書きモード時のキャレット職を表す
         /// </summary>
-        public Windows.UI.Color OverwriteCaret
+        public Brush OverwriteCaret
         {
-            get { return (Windows.UI.Color)GetValue(OverwriteCaretProperty); }
+            get { return (Brush)GetValue(OverwriteCaretProperty); }
             set { SetValue(OverwriteCaretProperty, value); }
         }
 
@@ -1979,14 +1981,14 @@ namespace FooEditEngine.UWP
         /// OverwriteCaretの依存プロパティを表す
         /// </summary>
         public static readonly DependencyProperty OverwriteCaretProperty =
-            DependencyProperty.Register("OverwriteCaret", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.Black, OnPropertyChanged));
+            DependencyProperty.Register("OverwriteCaret", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Black), OnPropertyChanged));
 
         /// <summary>
         /// 行番号の色を表す
         /// </summary>
-        public Windows.UI.Color LineNumber
+        public Brush LineNumber
         {
-            get { return (Windows.UI.Color)GetValue(LineNumberProperty); }
+            get { return (Brush)GetValue(LineNumberProperty); }
             set { SetValue(LineNumberProperty, value); }
         }
 
@@ -1994,7 +1996,7 @@ namespace FooEditEngine.UWP
         /// Using a DependencyProperty as the backing store for LineNumber.  This enables animation, styling, binding, etc...
         /// </summary>
         public static readonly DependencyProperty LineNumberProperty =
-            DependencyProperty.Register("LineNumber", typeof(Windows.UI.Color), typeof(FooTextBox), new PropertyMetadata(Colors.DimGray,OnPropertyChanged));
+            DependencyProperty.Register("LineNumber", typeof(Brush), typeof(FooTextBox), new PropertyMetadata(new SolidColorBrush(Colors.DimGray),OnPropertyChanged));
 
         /// <summary>
         /// 余白を表す
