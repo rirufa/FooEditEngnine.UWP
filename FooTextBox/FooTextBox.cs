@@ -1322,9 +1322,12 @@ namespace FooEditEngine.UWP
                 }
                 this.requestSizeChange = false;
             }
-            else if (this._View.LayoutLines.HilightAll() || this._View.LayoutLines.GenerateFolding() || this.Document.IsRequestRedraw)
+            else if(this._View != null && this.Document != null)
             {
-                this.Refresh(this._View.PageBound);
+                if (this._View.LayoutLines.HilightAll() || this._View.LayoutLines.GenerateFolding() || this.Document.IsRequestRedraw)
+                {
+                    this.Refresh(this._View.PageBound);
+                }
             }
             this.timer.Start();
         }

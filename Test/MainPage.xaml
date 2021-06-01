@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:foo="using:FooEditEngine.UWP"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary Source="MainPageStyles.xaml" />
@@ -16,22 +17,17 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Pivot ItemsSource="{Binding DocumentList}" Grid.Row="0" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}">
-            <Pivot.Resources>
-                <Style TargetType="PivotHeaderItem" BasedOn="{StaticResource CustomePivotHeaderStyle}"/>
-                <Style TargetType="Pivot" BasedOn="{StaticResource CustomPivotStyle}"/>
-            </Pivot.Resources>
-            <Pivot.HeaderTemplate>
+        <muxc:TabView TabItemsSource="{Binding DocumentList}" Grid.Row="0" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <muxc:TabView.TabItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Title}"/>
+                    <muxc:TabViewItem Header="{Binding Title}">
+                        <muxc:TabViewItem.Content>
+                            <foo:FooTextBox Name="fooTextBox" Document="{Binding }" AllowFocusOnInteraction="True"></foo:FooTextBox>
+                        </muxc:TabViewItem.Content>
+                    </muxc:TabViewItem>
                 </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <Pivot.ItemTemplate>
-                <DataTemplate>
-                    <foo:FooTextBox Name="fooTextBox" Document="{Binding }" AllowFocusOnInteraction="True"></foo:FooTextBox>
-                </DataTemplate>
-            </Pivot.ItemTemplate>
-        </Pivot>
+            </muxc:TabView.TabItemTemplate>
+        </muxc:TabView>
         <StackPanel Grid.Row="1" >
             <Button Content="Load" Click="Button_Click"/>
             <Button Content="Print" Click="Print_Button_Click"/>
